@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOHAND | Farmer Portal - Sign In, Register & Reset Password</title>
+  <meta name="description" content="Sign in or create an account with GOHAND Agro Chemicals. Access custom farm dosages, order history, and bulk pricing.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+  <div class="auth-page-container">
+    
+    <!-- Left Hero Banner: Welcoming Farm Context with Tasteful Motion -->
+    <div class="auth-visual-panel">
+      <!-- Animated Background Video from Agrochemical Field Sequence -->
+      <video class="auth-bg-video" autoplay muted loop playsinline poster="assets/bg-frames/ezgif-frame-001.jpg">
+        <source src="assets/bg-video.mp4" type="video/mp4">
+      </video>
+      <!-- Fallback Ken-Burns Background Zoom -->
+      <div class="auth-bg-zoom"></div>
+      <div class="auth-overlay"></div>
+
+      <!-- Subtle Drifting Farm Seeds/Leaves -->
+      <div class="auth-floating-seeds">
+        <span class="floating-seed seed-1">🌱</span>
+        <span class="floating-seed seed-2">🌾</span>
+        <span class="floating-seed seed-3">🍃</span>
+        <span class="floating-seed seed-4">✨</span>
+      </div>
+
+      <div class="auth-visual-content">
+        <a href="index.html" class="auth-brand-back">
+          <span class="auth-logo-icon">🌱</span>
+          <span class="auth-logo-text">GOHAND</span>
+        </a>
+
+        <div class="auth-hero-copy">
+          <h2>Agrochemicals simplified for growers.</h2>
+          <p>
+            Join over 50,000 farmers managing their crop protection, personalized chemical dosages, and direct field deliveries.
+          </p>
+
+          <div class="auth-perks-list">
+            <div class="auth-perk-item">
+              <span class="perk-icon">🌾</span>
+              <div>
+                <strong>Tailored Crop Guidance</strong>
+                <p>Saved field profiles & custom chemical mixing charts.</p>
+              </div>
+            </div>
+            <div class="auth-perk-item">
+              <span class="perk-icon">🚜</span>
+              <div>
+                <strong>Express Field Delivery</strong>
+                <p>Track tractor and depot dispatch in real time.</p>
+              </div>
+            </div>
+            <div class="auth-perk-item">
+              <span class="perk-icon">🏷️</span>
+              <div>
+                <strong>Bulk Farm Discounts</strong>
+                <p>Volume pricing for commercial acreage and cooperatives.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-footer-note">
+          <span>Need immediate agronomy support? Call <strong>1-800-464-263</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Clean Casual Auth Forms with Micro-Interactions -->
+    <div class="auth-form-panel">
+      <div class="auth-form-wrapper">
+        
+        <!-- Header Link Back to Shop -->
+        <div class="auth-top-bar">
+          <a href="index.html" class="back-link">
+            ← Return to Store
+          </a>
+          <span class="auth-help-pill">Farmer Support 24/7</span>
+        </div>
+
+        <!-- Form Mode Navigation Tabs -->
+        <div class="auth-nav-tabs">
+          <button type="button" class="auth-tab-btn active" id="tab-signin" onclick="switchAuthTab('signin')">
+            Sign In
+          </button>
+          <button type="button" class="auth-tab-btn" id="tab-register" onclick="switchAuthTab('register')">
+            Create Account
+          </button>
+          <button type="button" class="auth-tab-btn" id="tab-forgot" onclick="switchAuthTab('forgot')">
+            Reset Password
+          </button>
+        </div>
+
+        <!-- Notification / Status Banner -->
+        <div id="auth-alert-box" class="auth-alert hidden"></div>
+
+        <!-- Quick Demo Login Pill -->
+        <div class="demo-login-banner" id="demo-box">
+          <span>💡 Quick Test?</span>
+          <button type="button" class="btn-demo-fill" onclick="fillDemoCredentials()">
+            Auto-fill Demo Farmer Account
+          </button>
+        </div>
+
+        <!-- 1. SIGN IN FORM -->
+        <form id="form-signin" class="auth-form" onsubmit="handleSignIn(event)">
+          <div class="form-title-group">
+            <h3>Welcome back</h3>
+            <p>Enter your details to access your farm account.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="signin-email">Email or Mobile Number</label>
+            <input type="text" id="signin-email" placeholder="farmer@greenvalley.com or (555) 019-2834" required autocomplete="username">
+          </div>
+
+          <div class="form-group">
+            <div class="label-with-action">
+              <label for="signin-password">Password</label>
+              <a href="javascript:void(0)" onclick="switchAuthTab('forgot')" class="forgot-link">Forgot password?</a>
+            </div>
+            <div class="password-input-wrap">
+              <input type="password" id="signin-password" placeholder="••••••••" required autocomplete="current-password">
+              <button type="button" class="toggle-pwd-btn" onclick="togglePasswordVisibility('signin-password')">Show</button>
+            </div>
+          </div>
+
+          <div class="form-row-checkbox">
+            <label class="checkbox-label">
+              <input type="checkbox" id="remember-me" checked>
+              <span>Keep me signed in on this device</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-auth-submit" id="btn-signin-submit">
+            <span>Sign In to GOHAND</span>
+          </button>
+
+          <div class="auth-switch-text">
+            Don't have an account yet? 
+            <a href="javascript:void(0)" onclick="switchAuthTab('register')">Create an account</a>
+          </div>
+        </form>
+
+        <!-- 2. CREATE ACCOUNT FORM -->
+        <form id="form-register" class="auth-form hidden" onsubmit="handleRegister(event)">
+          <div class="form-title-group">
+            <h3>Create a Farmer Account</h3>
+            <p>Start ordering chemical solutions and saving your field data.</p>
+          </div>
+
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="reg-name">Full Name</label>
+              <input type="text" id="reg-name" placeholder="e.g. John Henderson" required>
+            </div>
+            <div class="form-group">
+              <label for="reg-farm">Farm / Business Name</label>
+              <input type="text" id="reg-farm" placeholder="e.g. Henderson Acres" required>
+            </div>
+          </div>
+
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="reg-email">Email Address</label>
+              <input type="email" id="reg-email" placeholder="john@hendersonfarms.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="reg-phone">Phone Number</label>
+              <input type="tel" id="reg-phone" placeholder="(555) 234-5678" required autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="reg-crop">Primary Crop</label>
+              <select id="reg-crop">
+                <option value="Wheat">Wheat & Small Grains</option>
+                <option value="Paddy / Rice">Paddy / Rice</option>
+                <option value="Corn / Maize">Corn / Maize</option>
+                <option value="Cotton">Cotton</option>
+                <option value="Vegetables">Vegetables & Greenhouses</option>
+                <option value="Orchards">Fruits & Orchards</option>
+                <option value="Mixed">Mixed Agriculture</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="reg-acres">Farm Size (Acres)</label>
+              <input type="number" id="reg-acres" placeholder="e.g. 50" min="1" max="10000" required>
+            </div>
+          </div>
+
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="reg-password">Password</label>
+              <div class="password-input-wrap">
+                <input type="password" id="reg-password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password">
+                <button type="button" class="toggle-pwd-btn" onclick="togglePasswordVisibility('reg-password')">Show</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="reg-confirm">Confirm Password</label>
+              <div class="password-input-wrap">
+                <input type="password" id="reg-confirm" placeholder="Repeat password" minlength="6" required autocomplete="new-password">
+                <button type="button" class="toggle-pwd-btn" onclick="togglePasswordVisibility('reg-confirm')">Show</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row-checkbox">
+            <label class="checkbox-label">
+              <input type="checkbox" id="reg-terms" required>
+              <span>I agree to the <a href="#" class="inline-link">Terms of Supply</a> and <a href="#" class="inline-link">Pesticide Safe Handling Terms</a>.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-auth-submit" id="btn-reg-submit">
+            <span>Complete Account Setup</span>
+          </button>
+
+          <div class="auth-switch-text">
+            Already have an account? 
+            <a href="javascript:void(0)" onclick="switchAuthTab('signin')">Sign In</a>
+          </div>
+        </form>
+
+        <!-- 3. FORGOT PASSWORD FORM -->
+        <form id="form-forgot" class="auth-form hidden" onsubmit="handleForgotPassword(event)">
+          <div class="form-title-group">
+            <h3>Reset your password</h3>
+            <p>Enter the email or phone number associated with your farm account and we'll send you recovery instructions.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="forgot-input">Registered Email or Phone Number</label>
+            <input type="text" id="forgot-input" placeholder="farmer@domain.com or phone number" required>
+          </div>
+
+          <button type="submit" class="btn-auth-submit" id="btn-forgot-submit">
+            <span>Send Reset Instructions</span>
+          </button>
+
+          <div class="auth-switch-text">
+            Remembered your password? 
+            <a href="javascript:void(0)" onclick="switchAuthTab('signin')">Back to Sign In</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Tab switching logic (Sign In, Register, Forgot Password)
+    function switchAuthTab(tab) {
+      const tabs = ['signin', 'register', 'forgot'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        const form = document.getElementById(`form-${t}`);
+        if (btn) btn.classList.remove('active');
+        if (form) {
+          form.classList.add('hidden');
+          form.style.animation = 'none';
+        }
+      });
+
+      const activeBtn = document.getElementById(`tab-${tab}`);
+      const activeForm = document.getElementById(`form-${tab}`);
+      if (activeBtn) activeBtn.classList.add('active');
+      if (activeForm) {
+        activeForm.classList.remove('hidden');
+        // Re-trigger animation
+        void activeForm.offsetWidth;
+        activeForm.style.animation = 'formSwitchIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+      }
+
+      const demoBox = document.getElementById('demo-box');
+      if (demoBox) {
+        demoBox.style.display = (tab === 'signin') ? 'flex' : 'none';
+      }
+
+      hideAlert();
+    }
+
+    // Toggle password visibility
+    function togglePasswordVisibility(inputId) {
+      const input = document.getElementById(inputId);
+      const btn = event.target;
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = 'Hide';
+      } else {
+        input.type = 'password';
+        btn.textContent = 'Show';
+      }
+    }
+
+    // Fill Demo Credentials for instant testing
+    function fillDemoCredentials() {
+      const emailField = document.getElementById('signin-email');
+      const pwdField = document.getElementById('signin-password');
+      emailField.value = 'marcus@hendersonfarms.com';
+      pwdField.value = 'farmer2026';
+
+      // Pulse input focus
+      emailField.focus();
+      setTimeout(() => pwdField.focus(), 200);
+
+      showAlert('Demo credentials filled! Click "Sign In to GOHAND".', 'info');
+    }
+
+    // Alert banner with animation trigger
+    function showAlert(message, type = 'info') {
+      const alertBox = document.getElementById('auth-alert-box');
+      if (!alertBox) return;
+      alertBox.textContent = message;
+      alertBox.className = `auth-alert ${type}`;
+
+      // Trigger shake on error
+      if (type === 'error') {
+        alertBox.style.animation = 'none';
+        void alertBox.offsetWidth;
+        alertBox.style.animation = 'alertShake 0.45s ease forwards';
+      }
+    }
+
+    function hideAlert() {
+      const alertBox = document.getElementById('auth-alert-box');
+      if (alertBox) alertBox.className = 'auth-alert hidden';
+    }
+
+    // Celebration burst
+    function triggerMiniCelebration() {
+      const count = 35;
+      const colors = ['#15803d', '#22c55e', '#86efac', '#f59e0b', '#38bdf8'];
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.style.position = 'fixed';
+        p.style.top = '50%';
+        p.style.left = '50%';
+        p.style.width = `${Math.random() * 8 + 4}px`;
+        p.style.height = `${Math.random() * 8 + 4}px`;
+        p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        p.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        p.style.pointerEvents = 'none';
+        p.style.zIndex = '9999';
+        p.style.transition = 'all 0.75s cubic-bezier(0.16, 1, 0.3, 1)';
+        document.body.appendChild(p);
+
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * 180 + 40;
+        const destX = Math.cos(angle) * dist;
+        const destY = Math.sin(angle) * dist;
+
+        requestAnimationFrame(() => {
+          p.style.transform = `translate(${destX}px, ${destY}px) scale(0)`;
+          p.style.opacity = '0';
+        });
+
+        setTimeout(() => p.remove(), 800);
+      }
+    }
+
+    // Handle Sign In
+    function handleSignIn(e) {
+      e.preventDefault();
+      const email = document.getElementById('signin-email').value.trim();
+      const password = document.getElementById('signin-password').value;
+      const submitBtn = document.getElementById('btn-signin-submit');
+
+      if (!email || !password) {
+        showAlert('Please enter both your email/phone and password.', 'error');
+        return;
+      }
+
+      // Button loading state
+      submitBtn.innerHTML = '<span>Verifying credentials... ⏳</span>';
+      submitBtn.style.opacity = '0.85';
+
+      setTimeout(() => {
+        const user = {
+          name: email.includes('@') ? email.split('@')[0].replace('.', ' ') : 'Farmer',
+          email: email,
+          farm: 'Valley Green Farm',
+          acres: 45,
+          loggedIn: true
+        };
+
+        if (email.toLowerCase().includes('henderson')) {
+          user.name = 'Marcus Henderson';
+          user.farm = 'Henderson Wheat Farm';
+          user.acres = 420;
+        }
+
+        localStorage.setItem('gohand_user', JSON.stringify(user));
+        triggerMiniCelebration();
+        submitBtn.innerHTML = '<span>✓ Signed In! Redirecting...</span>';
+        showAlert('Welcome back! Loading your farm dashboard...', 'success');
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 600);
+      }, 500);
+    }
+
+    // Handle Register
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value.trim();
+      const farm = document.getElementById('reg-farm').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const crop = document.getElementById('reg-crop').value;
+      const acres = document.getElementById('reg-acres').value;
+      const password = document.getElementById('reg-password').value;
+      const confirm = document.getElementById('reg-confirm').value;
+      const submitBtn = document.getElementById('btn-reg-submit');
+
+      if (password !== confirm) {
+        showAlert('Passwords do not match. Please re-enter.', 'error');
+        return;
+      }
+
+      submitBtn.innerHTML = '<span>Creating your farm account... ⏳</span>';
+
+      setTimeout(() => {
+        const user = {
+          name: name,
+          farm: farm,
+          email: email,
+          phone: phone,
+          crop: crop,
+          acres: acres,
+          loggedIn: true
+        };
+
+        localStorage.setItem('gohand_user', JSON.stringify(user));
+        triggerMiniCelebration();
+        submitBtn.innerHTML = '<span>✓ Account Ready! Redirecting...</span>';
+        showAlert(`Welcome to GOHAND, ${farm}! Redirecting to store...`, 'success');
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 700);
+      }, 500);
+    }
+
+    // Handle Forgot Password
+    function handleForgotPassword(e) {
+      e.preventDefault();
+      const input = document.getElementById('forgot-input').value.trim();
+      const submitBtn = document.getElementById('btn-forgot-submit');
+
+      if (!input) {
+        showAlert('Please provide your registered email or phone.', 'error');
+        return;
+      }
+
+      submitBtn.innerHTML = '<span>Sending instructions... ⏳</span>';
+
+      setTimeout(() => {
+        submitBtn.innerHTML = '<span>✓ Instructions Sent!</span>';
+        showAlert(`Password reset link and SMS code sent to ${input}. Please check your inbox.`, 'success');
+        document.getElementById('forgot-input').value = '';
+        setTimeout(() => {
+          submitBtn.innerHTML = '<span>Send Reset Instructions</span>';
+        }, 2500);
+      }, 600);
+    }
+
+    // Auto-detect URL hashes e.g. login.html#register or login.html#forgot
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash === 'register' || hash === 'forgot' || hash === 'signin') {
+        switchAuthTab(hash);
+      }
+    });
+  </script>
+</body>
+</html>

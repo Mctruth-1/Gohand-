@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOHAND | Practical Agrochemicals & Crop Solutions for Farmers</title>
+  <meta name="description" content="GOHAND - Clean, reliable agrochemical platform for farmers. Herbicides, insecticides, fungicides, and nano fertilizers with field dosage calculations.">
+  
+  <!-- Modern Clean Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Site-Wide Dynamic Animated Background (Agrochemical field sequence) -->
+  <div class="site-bg-wrapper">
+    <video id="site-bg-video" class="site-bg-media" autoplay muted loop playsinline poster="assets/bg-frames/ezgif-frame-001.jpg">
+      <source src="assets/bg-video.mp4" type="video/mp4">
+    </video>
+    <canvas id="site-bg-canvas" class="site-bg-canvas"></canvas>
+    <div class="site-bg-overlay"></div>
+  </div>
+
+  <!-- Top Announcement Bar -->
+  <div class="spray-ticker-bar">
+    <div class="ticker-content">
+      <div class="ticker-left">
+        <span class="pulse-dot"></span>
+        <span>Field Weather Advisory: <strong>Optimal Spray Window Active</strong> (Wind: 4.2 km/h • Humidity: 62% • No Rain Expected)</span>
+      </div>
+      <div class="ticker-stats">
+        <span class="ticker-badge">🚜 Free Delivery on orders over $150</span>
+        <span>Agro Support: <strong>1-800-464-263</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Site Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Logo -->
+      <a href="index.html" class="logo-wrapper">
+        <div class="logo-icon-box">🌱</div>
+        <div>
+          <span class="logo-brand">GOHAND</span>
+          <span class="logo-sub">Agro Chemicals</span>
+        </div>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#store">Chemicals</a></li>
+          <li><a href="#calculator">Dosage Calculator</a></li>
+          <li><a href="#safety">Safety Guidelines</a></li>
+          <li><a href="#reviews">Farmer Reviews</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search, Auth & Cart -->
+      <div class="header-actions">
+        <div class="search-input-pill">
+          <svg class="search-icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="chemical-search-input" placeholder="Search chemicals, weeds...">
+        </div>
+
+        <!-- Dynamic User Auth Container (Sign In / Register or Logged-in Profile) -->
+        <div id="header-auth-container">
+          <a href="login.html" class="user-account-btn">
+            <span>👤 Sign In / Register</span>
+          </a>
+        </div>
+
+        <!-- Shopping Cart Button -->
+        <button class="cart-pill-btn" onclick="openCartDrawer()">
+          <span>Cart</span>
+          <span class="cart-count-bubble">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section (Casual & Clean) -->
+  <section class="hero-casual-section" id="home">
+    <div class="hero-grid">
+      <div class="hero-text-col">
+        <div class="hero-tag">
+          <span>✓</span> Field-Tested Agricultural Formulations
+        </div>
+        <h1 class="hero-title">
+          Reliable Crop Chemicals <br>
+          <span class="highlight-green">For Healthier, Bigger Yields.</span>
+        </h1>
+        <p class="hero-lead">
+          Straightforward chemical supplies for practical growers. Order certified systemic herbicides, pollinator-safe fungicides, and nano fertilizers with calibrated farm dosage guides.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#store" class="btn-casual-primary">
+            <span>Shop Chemical Store</span> →
+          </a>
+          <a href="#calculator" class="btn-casual-secondary">
+            <span>Calculate Field Dosage</span> 📐
+          </a>
+        </div>
+
+        <div class="hero-trust-row">
+          <div class="hero-trust-item">
+            <h4>50,000+</h4>
+            <p>Acres Treated</p>
+          </div>
+          <div class="hero-trust-item">
+            <h4>99.4%</h4>
+            <p>Active Purity</p>
+          </div>
+          <div class="hero-trust-item">
+            <h4>24 Hours</h4>
+            <p>Tractor Field Delivery</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card with Live Agrochemical Footage -->
+      <div class="hero-visual-card">
+        <div class="hero-img-box">
+          <video autoplay muted loop playsinline poster="assets/bg-frames/ezgif-frame-001.jpg">
+            <source src="assets/bg-video.mp4" type="video/mp4">
+            <img src="assets/bg-frames/ezgif-frame-001.jpg" alt="Agrochemical in field">
+          </video>
+          <div class="hero-img-overlay-badge">
+            ✓ GOHAND Field Protection Live
+          </div>
+        </div>
+        <div class="hero-card-perks">
+          <div class="mini-perk-box">
+            <span>⚡</span>
+            <h5>Fast Translocation</h5>
+          </div>
+          <div class="mini-perk-box">
+            <span>🐝</span>
+            <h5>Bee-Safe Options</h5>
+          </div>
+          <div class="mini-perk-box">
+            <span>📦</span>
+            <h5>Bulk Drum Delivery</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chemical Catalog Section -->
+  <section class="catalog-section" id="store">
+    <div class="section-header">
+      <span class="sub-title">Product Catalog</span>
+      <h2>Agricultural Chemicals & Crop Health</h2>
+      <p>Select proven formulas with clear active ingredients, rainfast ratings, and acreage rates.</p>
+    </div>
+
+    <!-- Category Filter Pills -->
+    <div class="filter-pills-wrap">
+      <button class="filter-btn active" data-filter="all">All Formulations</button>
+      <button class="filter-btn" data-filter="herbicides">Herbicides (Weed Control)</button>
+      <button class="filter-btn" data-filter="insecticides">Insecticides (Pest Guard)</button>
+      <button class="filter-btn" data-filter="fungicides">Fungicides (Disease Shield)</button>
+      <button class="filter-btn" data-filter="fertilizers">Nano Fertilizers & Foliar</button>
+      <button class="filter-btn" data-filter="soil">Soil Conditioners</button>
+    </div>
+
+    <!-- Dynamic Product Cards Grid -->
+    <div class="products-grid" id="products-grid">
+      <!-- Injected via script.js -->
+    </div>
+  </section>
+
+  <!-- Crop Doctor & Dosage Calculator -->
+  <section class="calculator-section" id="calculator">
+    <div class="section-header">
+      <span class="sub-title">Field Dosage Calculator</span>
+      <h2>Calculate Exact Chemical & Water Ratios</h2>
+      <p>Prevent underdosing and chemical waste. Choose your crop, problem, and acreage to calculate exact requirements.</p>
+    </div>
+
+    <div class="calc-container-card">
+      <div class="calc-grid">
+        <!-- Steps Column -->
+        <div class="calc-steps-column">
+          
+          <!-- Step 1: Crop Selection -->
+          <div class="calc-step-card">
+            <div class="step-label">
+              <span class="step-number">1</span>
+              <span>Select Your Crop Type</span>
+            </div>
+            <div class="crop-select-grid">
+              <div class="crop-option-btn selected" data-crop="wheat">
+                <span class="crop-emoji">🌾</span>
+                <span class="crop-name">Wheat</span>
+              </div>
+              <div class="crop-option-btn" data-crop="paddy">
+                <span class="crop-emoji">🍚</span>
+                <span class="crop-name">Paddy / Rice</span>
+              </div>
+              <div class="crop-option-btn" data-crop="corn">
+                <span class="crop-emoji">🌽</span>
+                <span class="crop-name">Corn / Maize</span>
+              </div>
+              <div class="crop-option-btn" data-crop="cotton">
+                <span class="crop-emoji">☁️</span>
+                <span class="crop-name">Cotton</span>
+              </div>
+              <div class="crop-option-btn" data-crop="vegetables">
+                <span class="crop-emoji">🍅</span>
+                <span class="crop-name">Vegetables</span>
+              </div>
+              <div class="crop-option-btn" data-crop="orchards">
+                <span class="crop-emoji">🍎</span>
+                <span class="crop-name">Orchards</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Issue Selection -->
+          <div class="calc-step-card">
+            <div class="step-label">
+              <span class="step-number">2</span>
+              <span>Identify Field Problem</span>
+            </div>
+            <div class="issue-select-grid">
+              <div class="issue-option-btn selected" data-issue="weeds">
+                <span style="font-size: 1.25rem;">🌿</span>
+                <div>
+                  <strong style="display:block; font-size:0.85rem;">Weed Outbreak</strong>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">Grasses & broadleaf weeds</span>
+                </div>
+              </div>
+              <div class="issue-option-btn" data-issue="insects">
+                <span style="font-size: 1.25rem;">🐛</span>
+                <div>
+                  <strong style="display:block; font-size:0.85rem;">Insects & Borers</strong>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">Caterpillars, aphids, worms</span>
+                </div>
+              </div>
+              <div class="issue-option-btn" data-issue="blight">
+                <span style="font-size: 1.25rem;">🍄</span>
+                <div>
+                  <strong style="display:block; font-size:0.85rem;">Blight & Rust</strong>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">Leaf spots and rot</span>
+                </div>
+              </div>
+              <div class="issue-option-btn" data-issue="yellowing">
+                <span style="font-size: 1.25rem;">🍃</span>
+                <div>
+                  <strong style="display:block; font-size:0.85rem;">Yellow Leaves</strong>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">Nitrogen / Zinc deficiency</span>
+                </div>
+              </div>
+              <div class="issue-option-btn" data-issue="flowering">
+                <span style="font-size: 1.25rem;">🌸</span>
+                <div>
+                  <strong style="display:block; font-size:0.85rem;">Flower / Pod Drop</strong>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">Boost fruit setting</span>
+                </div>
+              </div>
+              <div class="issue-option-btn" data-issue="soil">
+                <span style="font-size: 1.25rem;">🪴</span>
+                <div>
+                  <strong style="display:block; font-size:0.85rem;">Hard Soil & Weak Roots</strong>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">Humic acid revival</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Acreage Slider -->
+          <div class="calc-step-card">
+            <div class="step-label">
+              <span class="step-number">3</span>
+              <span>Farm Land Size</span>
+            </div>
+            <div class="acre-slider-box">
+              <div class="acre-slider-header">
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Select acreage to spray:</span>
+                <span class="acre-display-badge" id="acreage-val-display">5 Acres</span>
+              </div>
+              <input type="range" class="custom-range" id="acreage-slider" min="1" max="50" value="5" step="1">
+              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted);">
+                <span>1 Acre</span>
+                <span>25 Acres</span>
+                <span>50 Acres</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Result Card -->
+        <div class="calc-result-panel">
+          <div>
+            <span class="result-tag" id="calc-selected-crop">WHEAT PRESCRIPTION</span>
+            <h3 class="result-product-name" id="calc-rec-name">GOHAND WeedStrike 480 SL</h3>
+            <p class="result-formula" id="calc-rec-formula">🧪 Glyphosate 41% w/w SL Systemic</p>
+            <p style="font-size: 0.8rem; color: #a7f3d0; margin-top: 4px;" id="calc-issue-name">Target: Perennial Grasses & Broadleaf Outbreak</p>
+          </div>
+
+          <div class="dosage-metrics-grid">
+            <div class="metric-pill">
+              <span class="metric-label">Required Chemical</span>
+              <span class="metric-val" id="metric-chem-qty">2.5 Liters</span>
+            </div>
+            <div class="metric-pill">
+              <span class="metric-label">Water Dilution</span>
+              <span class="metric-val" id="metric-water-qty">250 Litres</span>
+            </div>
+            <div class="metric-pill">
+              <span class="metric-label">Spray Tanks</span>
+              <span class="metric-val" id="metric-knapsacks">17 Tanks (15L)</span>
+            </div>
+            <div class="metric-pill">
+              <span class="metric-label">Field Status</span>
+              <span class="metric-val" style="color:#fcd34d;">Calibrated</span>
+            </div>
+          </div>
+
+          <div class="dosage-tips-box">
+            <strong>Application Note:</strong>
+            <p id="calc-tips-text" style="margin-top: 4px;">
+              Apply during active weed growth before flowering. Avoid spraying when wind speed is > 10 km/h.
+            </p>
+          </div>
+
+          <button class="btn-add-bundle" onclick="handleAddDosageBundle()">
+            Add Recommended Bundle to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety Guidelines -->
+  <section class="safety-section" id="safety">
+    <div class="section-header">
+      <span class="sub-title">Safe Handling</span>
+      <h2>Responsible Spraying & Worker Safety</h2>
+      <p>Protect your health, crop yields, and surrounding ecosystems with essential practices.</p>
+    </div>
+
+    <div class="safety-grid">
+      <div class="safety-card">
+        <span style="font-size: 1.8rem;">🥽</span>
+        <h4>Wear Proper PPE</h4>
+        <p>Always wear nitrile gloves, eye protection, and vapor masks when handling and pouring chemical concentrates.</p>
+      </div>
+
+      <div class="safety-card">
+        <span style="font-size: 1.8rem;">💨</span>
+        <h4>Check Wind Drift</h4>
+        <p>Never spray in wind speeds above 10 km/h or during high-heat midday updrafts. Spray early mornings with coarse droplets.</p>
+      </div>
+
+      <div class="safety-card">
+        <span style="font-size: 1.8rem;">🧪</span>
+        <h4>Accurate Tank Mixing</h4>
+        <p>Fill the tank half-full with clean water first, add measured chemical concentrate, mix thoroughly, then top off water.</p>
+      </div>
+
+      <div class="safety-card">
+        <span style="font-size: 1.8rem;">♻️</span>
+        <h4>Triple-Rinse Containers</h4>
+        <p>Rinse empty chemical containers three times into the spray tank, puncture the container, and recycle through local ag-depots.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Farmer Reviews -->
+  <section class="testimonials-section" id="reviews">
+    <div class="section-header">
+      <span class="sub-title">Verified Results</span>
+      <h2>What Growers Say About GOHAND</h2>
+      <p>Feedback from active commercial grain, cotton, and vegetable growers.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="farmer-avatar-wrap">
+          <div class="farmer-avatar">👨‍🌾</div>
+          <div class="farmer-details">
+            <h5>Marcus Henderson</h5>
+            <p>Wheat & Barley Grower • 420 Acres</p>
+          </div>
+        </div>
+        <div class="rating-stars">★★★★★</div>
+        <p class="testi-text">
+          "WeedStrike 480 wiped out stubborn wild oats in my wheat fields in under 3 days without yellowing the crop. The dosage calculator prevented chemical waste."
+        </p>
+      </div>
+
+      <div class="testi-card">
+        <div class="farmer-avatar-wrap">
+          <div class="farmer-avatar">👩‍🌾</div>
+          <div class="farmer-details">
+            <h5>Elena Ramirez</h5>
+            <p>Tomato & Pepper Grower • 35 Acres</p>
+          </div>
+        </div>
+        <div class="rating-stars">★★★★★</div>
+        <p class="testi-text">
+          "BioShield Max stopped our early blight outbreak cold. What I appreciate most is that our bumblebee hives were safe. Next-day delivery right to our gate."
+        </p>
+      </div>
+
+      <div class="testi-card">
+        <div class="farmer-avatar-wrap">
+          <div class="farmer-avatar">👨‍🌾</div>
+          <div class="farmer-details">
+            <h5>Devon Patel</h5>
+            <p>Cotton & Corn Producer • 150 Acres</p>
+          </div>
+        </div>
+        <div class="rating-stars">★★★★★</div>
+        <p class="testi-text">
+          "PestVanish 505 and DroneFlow adjuvant is the best combination for drone spraying. We covered 50 acres in 3 hours with minimal drift."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clean Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 style="color:#4ade80;">GOHAND</h4>
+          <p>
+            Supplying dependable agrochemicals, calibrated dosage calculations, and prompt farm delivery for commercial and family farms.
+          </p>
+          <p style="margin-top: 12px; font-size: 0.8rem; color: #64748b;">
+            EPA Registered Agrochemical Supplier.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Farmer Portal</h4>
+          <ul>
+            <li><a href="login.html">Farmer Sign In</a></li>
+            <li><a href="login.html#register">Create Farm Account</a></li>
+            <li><a href="login.html#forgot">Reset Password</a></li>
+            <li><a href="#calculator">Dosage Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Formulations</h4>
+          <ul>
+            <li><a href="#store">Herbicides</a></li>
+            <li><a href="#store">Insecticides</a></li>
+            <li><a href="#store">Fungicides</a></li>
+            <li><a href="#store">Nano Fertilizers</a></li>
+            <li><a href="#store">Soil Restorers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Emergency Agro Support</h4>
+          <div class="helpline-box">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: #a7f3d0; font-weight: 700;">Agronomist Helpline</span>
+            <span class="helpline-number">1-800-464-263</span>
+            <p style="font-size: 0.75rem; margin-top: 4px; color: #94a3b8;">Direct phone line for crop pest identification and emergency tank mix queries.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 GOHAND Agro Chemicals. All rights reserved. Always read and adhere to pesticide label directions.</p>
+        <div>
+          <a href="login.html" style="color: #94a3b8; text-decoration: none; margin-right: 15px;">Account Login</a>
+          <a href="#" style="color: #94a3b8; text-decoration: none;">Safety Data Sheets (MSDS)</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       Modals: Cart & Checkout
+       ========================================== -->
+  <div class="modal-backdrop" id="modal-backdrop" onclick="closeModals()"></div>
+
+  <!-- Cart Slide-Over Drawer -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Farm Cart</h3>
+      <button class="btn-close-modal" onclick="closeModals()">✕</button>
+    </div>
+
+    <div class="cart-body" id="cart-items-list">
+      <!-- Injected by script.js -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-totals-breakdown">
+        <div class="cart-total-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="cart-total-row">
+          <span>Field Delivery</span>
+          <span id="cart-delivery">$12.00</span>
+        </div>
+        <div class="cart-total-row grand-total">
+          <span>Total</span>
+          <span id="cart-grandtotal">$0.00</span>
+        </div>
+      </div>
+
+      <button class="btn-checkout-now" onclick="openCheckout()">
+        Proceed to Field Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- Checkout Dialog Modal -->
+  <div class="checkout-modal" id="checkout-modal">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h3 style="font-size: 1.25rem; font-weight: 700;">
+        Field Delivery Details
+      </h3>
+      <button class="btn-close-modal" onclick="closeModals()">✕</button>
+    </div>
+
+    <form onsubmit="submitCheckout(event)">
+      <div class="form-group">
+        <label>Farmer / Business Name</label>
+        <input type="text" id="chk-farmer-name" placeholder="e.g. Marcus Henderson" required>
+      </div>
+
+      <div class="form-group">
+        <label>Farm Location / Field Address</label>
+        <input type="text" id="chk-farm-location" placeholder="e.g. North Valley Road, Plot 14, Gate 2" required>
+      </div>
+
+      <div class="form-group">
+        <label>Delivery Method</label>
+        <select id="chk-delivery-method">
+          <option value="tractor">Express Tractor Delivery (Within 24 Hours)</option>
+          <option value="hub">Pickup at Local County Ag-Depot</option>
+          <option value="drone">Direct Field Air-Drop (&lt; 25kg)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Payment Method</label>
+        <select id="chk-payment-method">
+          <option value="harvest">Cash on Delivery / Pay at Harvest</option>
+          <option value="credit">Agro-Credit 60-Day Terms</option>
+          <option value="card">Credit / Debit Card</option>
+        </select>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <button type="submit" class="btn-casual-primary" style="width: 100%; justify-content: center;">
+          Confirm Field Dispatch
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
